@@ -4,9 +4,9 @@ public class MoveCharacter : MonoBehaviour
 {
     //in character 
     [SerializeField] private Rigidbody2D characterRB;
-    [SerializeField] private float movementSpeed, jumpForce;
+    [SerializeField] private float movementSpeed, testmovementSpeed, jumpForce;
     [SerializeField] private Collider2D colliderGroundCheck;
-    private float moveInput;
+    private float moveInput, horizontalSpeed;
     [SerializeField] private bool groundCheck;
 
     private void FixedUpdate()
@@ -17,18 +17,19 @@ public class MoveCharacter : MonoBehaviour
 
     private void Update()
     {
-        Jamp();
+        Jump();
+        transform.Translate(horizontalSpeed, 0, 0);
     }
 
     private void Move()
     {
         moveInput = Input.GetAxis("Horizontal");
-        characterRB.velocity = new Vector2(moveInput * movementSpeed, characterRB.velocity.y);
+        characterRB.velocity = new Vector2(moveInput * testmovementSpeed, characterRB.velocity.y);
     }
 
-    private void Jamp()
+    public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) & groundCheck == true)
+        if (Input.GetKeyDown(KeyCode.Space) && groundCheck == true)
         {
             characterRB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -59,5 +60,28 @@ public class MoveCharacter : MonoBehaviour
         {
             groundCheck = false;
         }
+    }
+
+    //sensor button character management 
+    public void OnJump()
+    {
+        if (groundCheck == true)
+        {
+            characterRB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+    public void OnLeft()
+    {
+        horizontalSpeed = movementSpeed;
+        characterRB.transform.localRotation = Quaternion.Euler(0, 180, 0);
+    }
+    public void OnRight()
+    {
+        horizontalSpeed = movementSpeed;
+        characterRB.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+    public void OnStop()
+    {
+        horizontalSpeed = 0;
     }
 }
