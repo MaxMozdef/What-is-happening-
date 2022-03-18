@@ -6,8 +6,14 @@ public class MoveCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D characterRB;
     [SerializeField] private float movementSpeed, testmovementSpeed, jumpForce;
     [SerializeField] private Collider2D colliderGroundCheck;
-    private float moveInput, horizontalSpeed;
     [SerializeField] private bool groundCheck;
+    private Animator animator;
+    private float moveInput, horizontalSpeed;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void FixedUpdate()
     {
@@ -68,20 +74,24 @@ public class MoveCharacter : MonoBehaviour
         if (groundCheck == true)
         {
             characterRB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            animator.SetTrigger("isJump");
         }
     }
     public void OnLeft()
     {
-        horizontalSpeed = movementSpeed;
-        characterRB.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            horizontalSpeed = movementSpeed;
+            characterRB.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("isRuning", true);
     }
     public void OnRight()
     {
-        horizontalSpeed = movementSpeed;
-        characterRB.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            horizontalSpeed = movementSpeed;
+            characterRB.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("isRuning", true);
     }
     public void OnStop()
     {
         horizontalSpeed = 0;
+        animator.SetBool("isRuning", false);
     }
 }
