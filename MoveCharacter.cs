@@ -19,18 +19,22 @@ public class MoveCharacter : MonoBehaviour
     {
         Move();
         FlipRightLeft();
+        Jump();
+        transform.Translate(horizontalSpeed, 0, 0);
     }
 
     private void Update()
     {
-        Jump();
-        transform.Translate(horizontalSpeed, 0, 0);
+        //Move();
+        //FlipRightLeft();
+        //Jump();
+        //transform.Translate(horizontalSpeed, 0, 0);
     }
 
     private void Move()
     {
         moveInput = Input.GetAxis("Horizontal");
-        characterRB.velocity = new Vector2(moveInput * testmovementSpeed, characterRB.velocity.y);
+        characterRB.velocity = new Vector2(moveInput * testmovementSpeed * Time.deltaTime, characterRB.velocity.y);
     }
 
     public void Jump()
@@ -73,19 +77,19 @@ public class MoveCharacter : MonoBehaviour
     {
         if (groundCheck == true)
         {
-            characterRB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            characterRB.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
             animator.SetTrigger("isJump");
         }
     }
     public void OnLeft()
     {
-            horizontalSpeed = movementSpeed;
+            horizontalSpeed = movementSpeed * Time.deltaTime;
             characterRB.transform.localRotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("isRuning", true);
     }
     public void OnRight()
     {
-            horizontalSpeed = movementSpeed;
+            horizontalSpeed = movementSpeed *Time.deltaTime;
             characterRB.transform.localRotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("isRuning", true);
     }

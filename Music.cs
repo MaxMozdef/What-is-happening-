@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
+    //on camera
     [SerializeField] private List <AudioClip> gameMusic;
     [SerializeField] private AudioSource audioSorce;
 
