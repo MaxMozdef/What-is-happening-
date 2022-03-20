@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
+    //on character
     [SerializeField] private Collider2D triggerToOpenDoor, characterCollider;
     [SerializeField] private GameObject door;
     [SerializeField] private Vector3 startPosition, endPosition;

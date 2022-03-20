@@ -9,6 +9,7 @@ public class MoveCharacter : MonoBehaviour
     [SerializeField] private bool groundCheck;
     private Animator animator;
     private float moveInput, horizontalSpeed;
+    [SerializeField] private bool sencorClicJump;
 
     private void Start()
     {
@@ -21,14 +22,7 @@ public class MoveCharacter : MonoBehaviour
         FlipRightLeft();
         Jump();
         transform.Translate(horizontalSpeed, 0, 0);
-    }
-
-    private void Update()
-    {
-        //Move();
-        //FlipRightLeft();
-        //Jump();
-        //transform.Translate(horizontalSpeed, 0, 0);
+        OnJump();
     }
 
     private void Move()
@@ -36,12 +30,11 @@ public class MoveCharacter : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         characterRB.velocity = new Vector2(moveInput * testmovementSpeed * Time.deltaTime, characterRB.velocity.y);
     }
-
     public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && groundCheck == true)
         {
-            characterRB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            characterRB.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
 
@@ -73,13 +66,22 @@ public class MoveCharacter : MonoBehaviour
     }
 
     //sensor button character management 
+
     public void OnJump()
     {
-        if (groundCheck == true)
+        if (sencorClicJump == true && groundCheck == true)
         {
             characterRB.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
             animator.SetTrigger("isJump");
         }
+    }
+    public void SensorClickBoolTrue()
+    {
+        sencorClicJump = true;
+    }
+    public void SensorClickBoolFalse()
+    {
+        sencorClicJump = false;
     }
     public void OnLeft()
     {
