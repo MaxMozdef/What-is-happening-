@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +10,7 @@ public class ToNextLevel : MonoBehaviour
     {
         if (collision == goNextLevelCollider)
         {
-            //SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
             Debug.Log("load next scene");
         }
     }

@@ -8,7 +8,7 @@ public class OpenDoor : MonoBehaviour
     [SerializeField] private Vector3 startPosition, endPosition;
     [SerializeField] private float stepMove;
     private float progress;
-    private bool openOrCloseDoor;
+    protected bool openOrCloseDoor;
 
     private void FixedUpdate()
     {
@@ -22,7 +22,7 @@ public class OpenDoor : MonoBehaviour
         }
     }
 
-    private void OpenTheDoor()
+    protected void OpenTheDoor()
     {
         if (openOrCloseDoor == true)
         {
