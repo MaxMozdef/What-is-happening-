@@ -83,6 +83,7 @@ public class MoveCharacter : MonoBehaviour
     {
         sencorClicJump = false;
     }
+    
     public void OnLeft()
     {
             horizontalSpeed = movementSpeed * Time.deltaTime;
@@ -91,10 +92,11 @@ public class MoveCharacter : MonoBehaviour
     }
     public void OnRight()
     {
-            horizontalSpeed = movementSpeed *Time.deltaTime;
+            horizontalSpeed = movementSpeed * Time.deltaTime;
             characterRB.transform.localRotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("isRuning", true);
     }
+    
     public void OnStop()
     {
         horizontalSpeed = 0;

@@ -4,6 +4,11 @@ public class Exit : MonoBehaviour
 {
     //on character
     [SerializeField] private Collider2D quitCollider;
+
+    private void Update()
+    {
+        DeleteAllSave();
+    }
     public void GoExit()
     {
         Application.Quit();
@@ -15,6 +20,14 @@ public class Exit : MonoBehaviour
         {
             GoExit();
             Debug.Log("quit!");
+        }
+    }
+    private void DeleteAllSave()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SelectionLevel.countUnlockedLevel = 1;
+            PlayerPrefs.SetInt("cul", SelectionLevel.countUnlockedLevel);
         }
     }
 }
