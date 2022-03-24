@@ -3,12 +3,17 @@ using UnityEngine.UI;
 
 public class SelectionLevel : MonoBehaviour
 {
-    public static int countUnlockedLevel = 1;
+    public static int countUnlockedLevel;
 
     private void Start()
     {
         countUnlockedLevel = PlayerPrefs.GetInt("cul");
         OpenCloseLevel();
+    }
+
+    private void Update()
+    {
+        Debug.Log($"open level - { countUnlockedLevel }");
     }
     private void OpenCloseLevel()
     {
@@ -18,10 +23,6 @@ public class SelectionLevel : MonoBehaviour
             if (i < countUnlockedLevel)
             {
                 transform.GetChild(i).GetComponent<Button>().interactable = true;
-            }
-            else
-            {
-                transform.GetChild(i).GetComponent<Button>().interactable = false;
             }
         }
     }
