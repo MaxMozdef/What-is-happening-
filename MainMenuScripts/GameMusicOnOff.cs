@@ -25,18 +25,14 @@ public class GameMusicOnOff : MonoBehaviour
     {
         if (collision == colliderMusic && musicIsPlay == true && chekForSavePlayMusic == 1)
         {
-            audioSourceInGame.volume = 0;
-            musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOn;
-            musicIsPlay = false;
+            WhenOn();
             chekForSavePlayMusic = 0;
             PlayerPrefs.SetInt("cfspm", chekForSavePlayMusic);
             return;
         }
         if (musicIsPlay == false && collision == colliderMusic && chekForSavePlayMusic == 0)
         {
-            audioSourceInGame.volume = 0.169f;
-            musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOff;
-            musicIsPlay = true;
+            WhenOff();
             chekForSavePlayMusic = 1;
             PlayerPrefs.SetInt("cfspm", chekForSavePlayMusic);
         }
@@ -47,15 +43,24 @@ public class GameMusicOnOff : MonoBehaviour
     {
         if (chekForSavePlayMusic == 0)
         {
-            audioSourceInGame.volume = 0;
-            musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOn;
-            musicIsPlay = false;
+            WhenOn();
         }
         if (chekForSavePlayMusic == 1)
         {
-            audioSourceInGame.volume = 0.169f;
-            musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOff;
-            musicIsPlay = true;
+            WhenOff();
         }
+    }
+
+    private void WhenOn()
+    {
+        audioSourceInGame.volume = 0;
+        musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOn;
+        musicIsPlay = false;
+    }
+    private void WhenOff()
+    {
+        audioSourceInGame.volume = 0.269f;
+        musicButton.GetComponent<SpriteRenderer>().sprite = spriteMusicOff;
+        musicIsPlay = true;
     }
 }

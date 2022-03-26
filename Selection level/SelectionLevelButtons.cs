@@ -7,8 +7,9 @@ public class SelectionLevelButtons : MonoBehaviour
     private void Start()
     {
         SelectionLevel.countUnlockedLevel = 1;
-        //SelectionLevel.countUnlockedLevel = PlayerPrefs.GetInt("cul");
+        SelectionLevel.countUnlockedLevel = PlayerPrefs.GetInt("cul");
         PlayerPrefs.SetInt("cul", SelectionLevel.countUnlockedLevel);
+        
     }
 
     public void SelectOneLevel()
