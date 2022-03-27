@@ -30,7 +30,7 @@ public class WaitForOpenDoor : OpenDoor
 
     private IEnumerator WaitOnOpenDoor()
     {
-        yield return new WaitForSeconds(22);
+        yield return new WaitForSeconds(33);
         canGo = true;
         openOrCloseDoor = true;
         backGroundLine.text = "go!";

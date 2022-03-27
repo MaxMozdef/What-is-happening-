@@ -6,7 +6,7 @@ public class MoveCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D characterRB;
     [SerializeField] private float movementSpeed, testmovementSpeed, jumpForce;
     [SerializeField] private Collider2D colliderGroundCheck;
-    [SerializeField] private bool groundCheck;
+    [SerializeField] public bool groundCheck;
     private Animator animator;
     private float moveInput, horizontalSpeed;
     [SerializeField] private bool sencorClicJump;
@@ -73,6 +73,10 @@ public class MoveCharacter : MonoBehaviour
         {
             characterRB.AddForce(transform.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
             animator.SetTrigger("isJump");
+            if (groundCheck == true)
+            {
+                animator.Play("Idle");
+            }
         }
     }
     public void SensorClickBoolTrue()

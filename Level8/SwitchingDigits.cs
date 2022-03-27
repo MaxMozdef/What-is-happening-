@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class SwitchingDigits : MonoBehaviour
 {
     //on canvas/block of numbers
-    [SerializeField] private TextMeshProUGUI numberInButtonLeft, numberInButtonCentr, numberInButtonRight;
-    public static byte simpleNumbersLeft, simpleNumbersCentr, simpleNumbersRight = 0;
+    [SerializeField] private TextMeshProUGUI numberInButtonLeft, numberInButtonCentr, numberInButtonRight, numberInButtonLast;
+    public static byte simpleNumbersLeft, simpleNumbersCentr, simpleNumbersRight, simpleNumbersLast = 0;
 
     public void LeftSelectNumbers()
     {
@@ -35,5 +33,14 @@ public class SwitchingDigits : MonoBehaviour
             simpleNumbersRight = 0;
         }
         numberInButtonRight.text = simpleNumbersRight.ToString();
+    }
+    public void LastSelectNumbers()
+    {
+        simpleNumbersLast++;
+        if (simpleNumbersLast > 9)
+        {
+            simpleNumbersLast = 0;
+        }
+        numberInButtonLast.text = simpleNumbersLast.ToString();
     }
 }
