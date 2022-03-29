@@ -7,9 +7,9 @@ public class MoveCharacter : MonoBehaviour
     [SerializeField] private float movementSpeed, testmovementSpeed, jumpForce;
     [SerializeField] private Collider2D colliderGroundCheck;
     [SerializeField] public bool groundCheck;
+    [SerializeField] private bool sencorClicJump;
     private Animator animator;
     private float moveInput, horizontalSpeed;
-    [SerializeField] private bool sencorClicJump;
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class MoveCharacter : MonoBehaviour
             animator.SetTrigger("isJump");
             if (groundCheck == true)
             {
-                animator.Play("Idle");
+                
             }
         }
     }

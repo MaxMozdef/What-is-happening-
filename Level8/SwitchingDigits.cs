@@ -5,8 +5,15 @@ public class SwitchingDigits : MonoBehaviour
 {
     //on canvas/block of numbers
     [SerializeField] private TextMeshProUGUI numberInButtonLeft, numberInButtonCentr, numberInButtonRight, numberInButtonLast;
-    public static byte simpleNumbersLeft, simpleNumbersCentr, simpleNumbersRight, simpleNumbersLast = 0;
+    public static byte simpleNumbersLeft, simpleNumbersCentr, simpleNumbersRight, simpleNumbersLast;
 
+    private void Start()
+    {
+        simpleNumbersLeft = 0;
+        simpleNumbersCentr = 0;
+        simpleNumbersRight = 0; 
+        simpleNumbersLast = 0;
+    }
     public void LeftSelectNumbers()
     {
         simpleNumbersLeft++;

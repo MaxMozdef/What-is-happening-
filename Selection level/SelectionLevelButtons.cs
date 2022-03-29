@@ -60,12 +60,5 @@ public class SelectionLevelButtons : MonoBehaviour
     {
         SceneManager.LoadScene(14);
     }
-    public void SelectThirteenLevel()
-    {
-        SceneManager.LoadScene(15);
-    }
-    public void SelectFourteenLevel()
-    {
-        SceneManager.LoadScene(16);
-    }
+    
 }
