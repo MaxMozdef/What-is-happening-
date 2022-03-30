@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
- public class KillBoss : MonoBehaviour
+public class KillBoss : MonoBehaviour
 {
     //on boss
     public bool isBossKill;
